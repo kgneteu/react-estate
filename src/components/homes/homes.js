@@ -1,202 +1,113 @@
-export const Homes = () => <div>
-    <section className="homes">
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-1.jpeg" alt="House 1" className="home__img"/>*/}
-    {/*        <svg className="home__like">*/}
-    {/*            <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*        </svg>*/}
-    {/*        <h5 className="home__name">Beautiful Familiy House</h5>*/}
-    {/*        <div className="home__location">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>USA</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__rooms">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>5 rooms</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__area">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>325 m<sup>2</sup></p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__price">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>$1,200,000</p>*/}
-    {/*        </div>*/}
-    {/*        <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
+import classes from "./homes.module.scss";
+import Sprite from '../../assets/img/sprite.svg'
+
+function SVGIcon({icon, className=null}) {
+    return <svg className={className?className:''}>
+        <use xlinkHref={`${Sprite}#${icon}`}/>
+    </svg>;
+}
+
+function House({houseData}) {
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+    });
+    const houseImg=require(`./../../assets/img/${houseData.img}`).default;
+    return <>
+        <div className={classes.home}>
+            <img src={houseImg} alt="House 1" className={classes.home__img}/>
+            <SVGIcon icon={'icon-heart-full'} className={classes.home__like}/>
 
 
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-2.jpeg" alt="House 2" className="home__img"/>*/}
-    {/*        <svg className="home__like">*/}
-    {/*            <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*        </svg>*/}
-    {/*        <h5 className="home__name">Modern Glass Villa</h5>*/}
-    {/*        <div className="home__location">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>Canada</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__rooms">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>6 rooms</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__area">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>450 m<sup>2</sup></p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__price">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>$2,750,000</p>*/}
-    {/*        </div>*/}
-    {/*        <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
+            <h5 className={classes.home__name}>{houseData.title}</h5>
+            <div className={classes.home__location}>
+                <SVGIcon icon={'icon-map-pin'}/>
+                <p>{houseData.location}</p>
+            </div>
+            <div className={classes.home__rooms}>
+                <SVGIcon icon={'icon-profile-male'}/>
+                <p>{houseData.rooms} rooms</p>
+            </div>
+            <div className={classes.home__area}>
+                <SVGIcon icon={'icon-expand'}/>
+                <p>{houseData.area} m<sup>2</sup></p>
+            </div>
+            <div className={classes.home__price}>
+                <SVGIcon icon={'icon-key'}/>
+                <p>{formatter.format(houseData.price)}</p>
+            </div>
+            <button className={`btn ${classes.home__btn}`}>Contact realtor</button>
+        </div>
+    </>;
+}
 
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-3.jpeg" alt="House 3" className="home__img"/>*/}
-    {/*        <svg className="home__like">*/}
-    {/*            <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*        </svg>*/}
-    {/*        <h5 className="home__name">Cozy Country House</h5>*/}
-    {/*        <div className="home__location">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>UK</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__rooms">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>4 rooms</p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__area">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>250 m<sup>2</sup></p>*/}
-    {/*        </div>*/}
-    {/*        <div className="home__price">*/}
-    {/*            <svg>*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*            </svg>*/}
-    {/*            <p>$850,000</p>*/}
-    {/*        </div>*/}
-    {/*        <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
+export const Homes = () =>
+    <section className={classes.homes}>
 
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-4.jpeg" alt="House 4" className="home__img"/>*/}
-    {/*            <svg className="home__like">*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*            </svg>*/}
-    {/*            <h5 className="home__name">Large Rustical Villa</h5>*/}
-    {/*            <div className="home__location">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>Portugal</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__rooms">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>6 rooms</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__area">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>480 m<sup>2</sup></p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__price">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>$1,950,000</p>*/}
-    {/*            </div>*/}
-    {/*            <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
+        <House houseData={
+            {
+                title: 'Beautiful Family House',
+                location: 'USA',
+                rooms: 5,
+                price: 1200000,
+                area: 325,
+                img: 'house-1.jpeg'
+            }
+        }/>
 
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-5.jpeg" alt="House 5" className="home__img"/>*/}
-    {/*            <svg className="home__like">*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*            </svg>*/}
-    {/*            <h5 className="home__name">Majestic Palace House</h5>*/}
-    {/*            <div className="home__location">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>Germany</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__rooms">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>18 rooms</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__area">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>4230 m<sup>2</sup></p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__price">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>$9,500,000</p>*/}
-    {/*            </div>*/}
-    {/*            <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
+        <House houseData={
+            {
+                title: 'Modern Glass Villa',
+                location: 'Canada',
+                rooms: 6,
+                price: 2750000,
+                area: 450,
+                img: 'house-2.jpeg'
+            }
+        }/>
 
-    {/*    <div className="home">*/}
-    {/*        <img src="img/house-6.jpeg" alt="House 6" className="home__img"/>*/}
-    {/*            <svg className="home__like">*/}
-    {/*                <use xlink:href="img/sprite.svg#icon-heart-full"></use>*/}
-    {/*            </svg>*/}
-    {/*            <h5 className="home__name">Modern Familiy Apartment</h5>*/}
-    {/*            <div className="home__location">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-map-pin"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>Italy</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__rooms">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-profile-male"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>3 rooms</p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__area">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-expand"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>180 m<sup>2</sup></p>*/}
-    {/*            </div>*/}
-    {/*            <div className="home__price">*/}
-    {/*                <svg>*/}
-    {/*                    <use xlink:href="img/sprite.svg#icon-key"></use>*/}
-    {/*                </svg>*/}
-    {/*                <p>$600,000</p>*/}
-    {/*            </div>*/}
-    {/*            <button className="btn home__btn">Contact realtor</button>*/}
-    {/*    </div>*/}
-    </section>
-</div>;
+        <House houseData={
+            {
+                title: 'Cozy Country House',
+                location: 'UK',
+                rooms: 4,
+                price: 850000,
+                area: 250,
+                img: 'house-3.jpeg'
+            }
+        }/>
+
+        <House houseData={
+            {
+                title: 'Large Rustical Villa',
+                location: 'Portugal',
+                rooms: 6,
+                price: 1950000,
+                area: 480,
+                img: 'house-4.jpeg'
+            }
+        }/>
+
+        <House houseData={
+            {
+                title: 'Majestic Palace House',
+                location: 'Germany',
+                rooms: 18,
+                price: 9500000,
+                area: 4230,
+                img: 'house-5.jpeg'
+            }
+        }/>
+        <House houseData={
+            {
+                title: 'Modern Family Apartment',
+                location: 'Italy',
+                rooms: 3,
+                price: 600000,
+                area: 180,
+                img: 'house-5.jpeg'
+            }
+        }/>
+
+    </section>;
