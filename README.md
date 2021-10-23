@@ -6,4 +6,4 @@ Real Estate Agency SPA in React.
 - run `npm run start` or `yarn start` to start in development mode
 
 # Demo
-View demo at: hhttps://kgneteu.github.io/react-estate/
+View demo at: https://kgneteu.github.io/react-estate/
